@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6">
+        <label >Name</label>
+        <input type="text" class="form-control" [(ngModel)]="name">
+        <label >Price</label>
+        <input type="number" class="form-control" [(ngModel)]="price">
+        <button type="button" class="btn btn-primary my-3" 
+            [routerLink] = "['/products']"
+            [queryParams] = "{name: name ? name: '', price: price ? price: ''}"
+            >Search</button>
+        <button type="button" class="btn btn-danger m-3" 
+            [routerLink] = "['/products']"
+            (click) = "onSearch()"
+            >Search</button>
+    </div>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products"[routerLink]="[ '/products', product.id ]">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price | currency : 'VND'}}</td>
+            <td>{{product.status? 'Active': 'Deactive'}}</td>
+        </tr>
+       
+    </tbody>
+</table>
