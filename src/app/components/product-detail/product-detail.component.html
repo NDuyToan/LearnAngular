@@ -2,5 +2,10 @@
 <h5>ID: {{product.id}}</h5>
 <h5>Price: {{product.price | currency: 'VND'}} </h5>
 <h5>Status: {{product.status? 'Active': 'Deactive'}}</h5>
-
-<a [routerLink]="[ '/products', 2 ]">Product 2</a>
+<button type="button" class="btn btn-info m-1" (click) = "onEdit()">Edit</button>
+<button type="button" class="btn btn-danger" >Delete</button>
+<br>
+<!-- <a [routerLink]="[ '/products', 2 ]">Product 2</a> -->
+<button type="button" class="btn btn-primary" [routerLink]="[ '/products/list' ]">Back To List</button>
+<button type="button" class="btn btn-danger m-1" (click)="onBackToList()">Back To List 2</button>
+<!-- <a [routerLink]="[ '/products/list' ]">Back To List</a> -->

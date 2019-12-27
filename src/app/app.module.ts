@@ -13,6 +13,9 @@ import { ProductsComponent } from './components/products/products.component';
 import { appRoutes} from './app.routes';
 import { ProductService} from './services/product.service';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     HomeComponent,
     NotFoundComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductListComponent,
+    ProductEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

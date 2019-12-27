@@ -9,7 +9,7 @@ export class ProductService {
     {
       id:1,
       name: 'Iphone 7',
-      price: 7000,
+      price: 6000,
       status: true
     },
     {
@@ -33,9 +33,21 @@ export class ProductService {
   ];
 
   constructor() { }
-  getAllProducts( name ?:string, price?: number){
-    let result: Product[] = [];
-    return this.products;
+  getAllProducts( name?:string, price?: number){
+    let result: Product[] = this.products;
+    if(name){
+      result = this.products.filter( product => { 
+        return product.name.toLocaleLowerCase().indexOf(name.toLocaleLowerCase()) !=-1
+      })
+      console.log(result);
+    }
+    if(price){
+      result = this.products.filter(product => {
+        return product.price == price;
+      } )
+    }
+    
+    return result;
   }
 
   getProductByID(id: number){

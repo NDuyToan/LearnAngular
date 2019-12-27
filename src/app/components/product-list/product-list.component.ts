@@ -6,11 +6,11 @@ import { Product } from './../../modules/product.class';
 import { ProductService} from '../../services/product.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
-export class ProductsComponent implements OnInit,OnDestroy {
+export class ProductListComponent implements OnInit, OnDestroy {
   public products: Product[] = [];
   public name: string;
   public price: number;
@@ -24,18 +24,18 @@ export class ProductsComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     
-   this.queryParamSubcription = this.activatedRoute.queryParams.subscribe(data =>{
-      let name = data.name;
-      let price = data.price;
-      this.products = this.productService.getAllProducts(name,price);
-    })
-  }
-  ngOnDestroy(){
-    if(this.queryParamSubcription){
-      this.queryParamSubcription.unsubscribe();
-    }
-  }
-  onSearch(){
+    this.queryParamSubcription = this.activatedRoute.queryParams.subscribe(data =>{
+       let name = data.name;
+       let price = data.price;
+       this.products = this.productService.getAllProducts(name,price);
+     })
+   }
+   ngOnDestroy(){
+     if(this.queryParamSubcription){
+       this.queryParamSubcription.unsubscribe();
+     }
+   }
+   onSearch(){
     this.routerService.navigate(['/products'],
     { queryParams: {name: this.name? this.name: '',
                      price: this.price? this.price: ''}})
